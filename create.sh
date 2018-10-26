@@ -10,3 +10,4 @@ az group deployment create \
   --template-file "./azuredeploy.json" \
   --resource-group TestSentiaRG \
   --parameters @azuredeploy.parameters.json
+   
