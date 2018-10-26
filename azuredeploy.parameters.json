@@ -4,7 +4,17 @@
   "parameters": {
     "storageAccountType": {
       "value": "Standard_GRS"
-    }
+    },
+    "Subnet-1 Address": {
+              "value": "172.16.1.0/24",
+          },
+    "Subnet-2 Address": {
+              "value": "172.16.2.0/24",
+                },
+    "Subnet-3 Address": {
+              "value": "172.16.3.0/24",
+          }
+
 
   }
 }

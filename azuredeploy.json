@@ -14,7 +14,41 @@
       "metadata": {
         "description": "Storage Account type"
       }
-    },
+  },
+
+      "Network Name": {
+               "defaultValue": "network-sentia",
+               "type": "string"
+           },
+      "Network Address": {
+               "defaultValue": "172.16.0.0/12",
+               "type": "string"
+           },
+     "Subnet-1 Name": {
+               "defaultValue": "subnet-01",
+               "type": "string"
+           },
+     "Subnet-1 Address": {
+               "defaultValue": "172.16.0.0/24",
+               "type": "string"
+           },
+     "Subnet-2 Name": {
+               "defaultValue": "subnet-02",
+               "type": "string"
+           },
+     "Subnet-2 Address": {
+               "defaultValue": "172.16.1.0/24",
+               "type": "string"
+           },
+     "Subnet-3 Name": {
+               "defaultValue": "subnet-03",
+               "type": "string"
+           },
+     "Subnet-3 Address": {
+               "defaultValue": "172.16.2.0/24",
+               "type": "string"
+           },
+
 
     "location": {
       "type": "string",
@@ -23,46 +57,11 @@
         "description": "Location for all resources."
       }
     },
-    "Network Name": {
-            "defaultValue": "network-sentia",
-            "type": "string"
-        },
-        "Network Address": {
-            "defaultValue": "172.16.0.0/12",
-            "type": "string"
-        },
-        "Subnet-1 Name": {
-            "defaultValue": "subnet-01",
-            "type": "string"
-        },
-        "Subnet-1 Address": {
-            "defaultValue": "172.16.1.0/24",
-            "type": "string"
-        },
-        "Subnet-2 Name": {
-            "defaultValue": "subnet-02",
-            "type": "string"
-        },
-        "Subnet-2 Address": {
-            "defaultValue": "172.16.2.0/24",
-            "type": "string"
-        },
-        "Subnet-3 Name": {
-            "defaultValue": "subnet-03",
-            "type": "string"
-        },
-        "Subnet-3 Address": {
-            "defaultValue": "172.16.3.0/24",
-            "type": "string"
-        }
+
   },
 
   "variables": {
      "storageAccountName": "[concat('sentia', uniquestring(resourceGroup().id))]",
-    "RGName" : "TestSentiaRG",
-    "RGEnvioment" : "Test",
-    "RGLocation": "westeurope",
-    "RGCompany" : "Sentia"
   },
   "resources": [
 
@@ -70,7 +69,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "apiVersion": "2018-02-01",
-      "location": "[variables('RGLocation')]",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
@@ -81,7 +80,7 @@
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('Network Name')]",
-      "location": "[variables('RGLocation')]",
+      "location": "[parameters('location')]",
       "tags": {
           "displayName": "[parameters('Network Name')]"
       },
