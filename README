@@ -1,1 +1,20 @@
-init
+Notes:
+
+Nearly all the tasks can be solved using an arm template except creating the resource group. That has to be done before creating all the other artifacts.
+
+The network address is quite large, most networks don't need that kind of space. if I use the whole network cidr address /12 and splits it into tree quale parts,
+it might give a problem in the future if we need to create other resource groups and route between them. With the current size(/24) of the subnet it possible to have 256(251 azure are reserving some) host in each
+subnet and 4096 subnets in that virtual network.
+
+The solution was developed in a couple of steps, the first "rough" POC was just a bash script that created a resource group and created a storage account using a JSON file ( not submitted to git). An
+an improved version that created storage account with the specification from the task description( name, encryption), added the tags to the, creating networks using mostly static information.
+
+Encryption is enabled by default from Microsoft on all kind of storage, that why it is not a part of the arm template.
+see https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview
+
+Problems:
+- I was not able to assign tags to the resource group using templates.
+- It was not possible for me to create a policy template and apply it.
+
+Time spend:
+~7-8 hours in  tota
