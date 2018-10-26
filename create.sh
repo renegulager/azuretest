@@ -8,5 +8,5 @@ az login
 az group deployment create \
   --name SentiaDeployment \
   --template-file "./azuredeploy.json" \
-  --parameters storageAccountType=Standard_GRS \
-  --resource-group TestSentiaRG
+  --resource-group TestSentiaRG \
+  --parameters @azuredeploy.parameters.json
